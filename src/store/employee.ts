@@ -1,24 +1,63 @@
-// src/features/counterSlice.ts
 import { createSlice, type PayloadAction }  from '@reduxjs/toolkit';
- 
+
+export type Employee = {
+  id: number,
+  name: string,
+  gender: string,
+  profile: string,
+  dob: Date | null,
+  state: string,
+  status: boolean
+}
+export type filtersType = {
+      searchQuery: string,
+      gender: string,
+      status: string
+    }
 export interface EmployeeData {
-  value: number;
+    employeeList: Employee[] | null
+    total: number,
+    activeEmployeeCount: number,
+    inactiveEmployeeCount: number
+    filters : filtersType | null
 }
 
-const initialState: EmployeeData = { value: 0 };
+const initialState: EmployeeData = { 
+  employeeList : null,
+  total: 0,
+  activeEmployeeCount: 0,
+  inactiveEmployeeCount: 0,
+  filters: null,
+};
 
 const employeeSlice = createSlice({
   name: 'employee',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    setEmployeeList: (state, action: PayloadAction<Employee[]>) => {
+      state.employeeList = action?.payload
+      
     },
-  
+    setEmployeeCount: (state, action:PayloadAction<Employee[]>)=>{
+      state.total = action?.payload?.length
+      const activeCount = action?.payload?.filter((each: Employee)=> each.status).length
+      state.activeEmployeeCount = activeCount
+      state.inactiveEmployeeCount = action?.payload?.length - activeCount
+    },
+    clearEmployeeList: (state) => {
+      state.employeeList = null
+      state.total = 0
+      state.activeEmployeeCount = 0
+      state.inactiveEmployeeCount = 0
+    },
+    setFilters: (state, action:PayloadAction<any>)=>{
+      state.filters = {...state.filters, ...action.payload}
+    },
+    clearFilters: (state)=>{
+      state.filters = null
+    }
   },
 });
 
-// Export actions for use in components
-export const { increment } = employeeSlice.actions;
-// Export the reducer for the store
+export const { setEmployeeList,setEmployeeCount, clearEmployeeList, setFilters, clearFilters } = employeeSlice.actions;
 export default employeeSlice.reducer;

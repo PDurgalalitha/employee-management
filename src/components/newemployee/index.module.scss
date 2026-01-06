@@ -1,0 +1,59 @@
+.container{
+    width: 100%;
+}
+.preview_img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.fields_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    width: 90%;
+    .header{
+        font-size: 24px;
+        font-weight: 300;
+    }
+    .fields{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .fields_input{
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid gray;
+        }
+        .fields_name{
+            font-size: 16px;
+
+        }
+        .error{
+            margin: 0px;
+            font-weight: 300;
+            font-size: 12px;
+            font-style: italic;
+            color: rgb(255, 44, 1)
+        }
+    }
+}
+.profile_upload_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.button{
+    padding: 10px;
+    border-radius: 4px;
+    background-color: blue;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.loader{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    justify-content: end;
+    gap:10px;
+    margin-bottom: 10px;
+    .search, .button,.filter{
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid gray
+    }
+    .button{
+        background-color: blue;
+        color: white;
+        border: none;
+        align-items: center;
+        cursor: pointer;
+    }
+}

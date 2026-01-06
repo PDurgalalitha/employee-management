@@ -22,7 +22,7 @@ export async function GET(route: string) {
 export async function POST<T>(route: string, payload:T ) {
   try {
     const response = await api.post(route, payload);
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error saving flow:", error);
     throw error;
@@ -32,7 +32,7 @@ export async function POST<T>(route: string, payload:T ) {
 export async function PUT<T= any>(route: string, payload: T) {
   try {
     const response = await api.put(route, payload);
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error saving flow:", error);
     throw error;
@@ -42,7 +42,7 @@ export async function PUT<T= any>(route: string, payload: T) {
 export async function DELETE(route: string) {
   try {
     const response = await api.delete(route)
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error saving flow:", error);
     throw error;
